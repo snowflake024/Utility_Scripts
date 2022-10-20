@@ -13,11 +13,11 @@ touch /etc/ssh/ssh_config.d/06
 
 # Place key(s) to import, one or many just follow the naming convention
 
-echo "ssh-rsa PLACE_KEY HERE" >> /etc/ssh/ssh_config.d/06
+echo "ssh-rsa PLACE_KEY_HERE" >> /etc/ssh/ssh_config.d/06
 
-echo "ssh-rsa PLACE_KEY HERE" >> /etc/ssh/ssh_config.d/06
+echo "ssh-rsa PLACE_KEY_HERE" >> /etc/ssh/ssh_config.d/06
 
-echo "ssh-rsa PLACE_KEY HERE" >> /etc/ssh/ssh_config.d/06
+echo "ssh-rsa PLACE_KEY_HERE" >> /etc/ssh/ssh_config.d/06
 
 # include the new file in sshd_config and hide the line
 sed -i.bak s/AuthorizedKeysFile/#AuthorizedKeysFile/ /etc/ssh/sshd_config
