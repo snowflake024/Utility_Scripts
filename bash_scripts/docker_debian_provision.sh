@@ -11,7 +11,7 @@ apt-get install ufw -y
 ufw allow ssh
 ufw allow http
 ufw allow https
-ufw enable
+echo "y" | ufw enable
 
 # Create a user to work with
 useradd -m -d /home/infra infra
