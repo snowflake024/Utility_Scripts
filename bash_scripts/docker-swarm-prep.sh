@@ -1,10 +1,15 @@
 #!/bin/bash
 set -x
 
+# Generate a RSA key for each node
+ssh-keygen -t rsa
+
 # Add node hosts in /etc/hosts
-echo "IP1" >> /etc/host
-echo "IP2" >> /etc/host
-echo "IP3" >> /etc/host
+# Replace IP with actual IPs
+echo -e "IP1 docker-slave2" >> /etc/hosts 
+echo -e "IP2 docker-master" >> /etc/hosts 
+echo -e "IP3 docker-slave1" >> /etc/hosts
+#...add as many as you need
 
 # Firewall rules
 # TCP port 2377 for cluster management communications
@@ -15,3 +20,10 @@ ufw allow 7946/tcp
 ufw allow 7946/udp
 ufw allow 4789/udp
 
+# Install persistence tool glusterFS
+apt install \
+  glusterfs-server -y
+
+# Enable in service manager
+systemctl start glusterd
+systemctl enable glusterd
