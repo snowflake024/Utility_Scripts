@@ -51,4 +51,8 @@ apt-get install \
 # Add user to docker group
 usermod -aG docker infra
 
+# Enable docker in systemd
+systemctl enable docker
+systemctl start docker
+
 EOF
