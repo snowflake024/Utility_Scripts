@@ -20,6 +20,27 @@ done
 
 # Firewall rules
 # To use the for cycle you need to correct the arrays if needed
+# TCP port 2377 for cluster management communications
+# TCP and UDP port 7946 for communication among nodes
+# UDP port 4789 for overlay network traffic
+# Ports have to be restricted to IPs, to avoid port scanning
+#ufw allow 2377/tcp
+#ufw allow 7946/tcp
+#ufw allow 7946/udp
+#ufw allow 4789/udp
+
+# Needed for storage persistence
+#ufw allow 24007:24008/tcp
+#ufw allow nfs
+#ufw allow 5667/tcp
+#ufw allow 111/tcp
+#ufw allow 139/tcp
+#ufw allow 445/tcp
+#ufw allow 965/tcp
+#ufw allow 38465:38469/tcp
+#ufw allow 631/tcp
+#ufw allow 963/tcp
+#ufw allow 49152:49251/tcp
 
 needed_ports_tcp=( \
               "2377" "7946" \
@@ -44,30 +65,7 @@ for ip in ${host_array[@]}; do
     ufw allow proto udp from $ip to any port $port
     done
 done
-              
-# TCP port 2377 for cluster management communications
-# TCP and UDP port 7946 for communication among nodes
-# UDP port 4789 for overlay network traffic
-# Ports have to be restricted to IPs, to avoid port scanning
-#ufw allow 2377/tcp
-#ufw allow 7946/tcp
-#ufw allow 7946/udp
-#ufw allow 4789/udp
-
-# Needed for storage persistence
-#ufw allow 24007:24008/tcp
-#ufw allow nfs
-#ufw allow 5667/tcp
-#ufw allow 111/tcp
-#ufw allow 139/tcp
-#ufw allow 445/tcp
-#ufw allow 965/tcp
-#ufw allow 38465:38469/tcp
-#ufw allow 631/tcp
-#ufw allow 963/tcp
-#ufw allow 49152:49251/tcp
-
-
+             
 # Install persistence tool glusterFS
 apt install \
   glusterfs-server -y
