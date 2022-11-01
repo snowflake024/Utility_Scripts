@@ -2,7 +2,8 @@
 
 set +xe
 
-sudo -i -u root bash << EOF
+#enable if root is not available
+#sudo -i -u root bash << EOF
 
 # Install firewall 
 apt-get install ufw -y
@@ -32,7 +33,7 @@ apt-get update
 apt-get upgrade -y
 
 # Update the apt package index and install packages to allow apt to use a repository over HTTPS
-apt-get install \
+apt-get install -y \
     ca-certificates \
     curl \
     gnupg \
@@ -50,7 +51,7 @@ echo \
 # Install docker engine
 apt-get update
 
-apt-get install \
+apt-get install -y \
     docker-ce \
     docker-ce-cli \
     containerd.io \
@@ -63,4 +64,4 @@ usermod -aG docker infra
 systemctl enable docker
 systemctl start docker
 
-EOF
+#EOF
