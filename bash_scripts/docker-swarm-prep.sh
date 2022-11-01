@@ -2,7 +2,7 @@
 set -x
 
 # Generate a RSA key for each node
-ssh-keygen -t rsa
+ssh-keygen -t rsa -N "" -f ~/.ssh/ssh.key
 
 # Add node hosts in /etc/hosts
 # Replace IP with actual IPs
