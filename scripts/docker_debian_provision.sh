@@ -4,6 +4,15 @@ set +xe
 
 sudo -i -u root bash << EOF
 
+# Install firewall 
+apt-get install ufw -y
+
+# Enable firewall and allow default ports
+ufw allow ssh
+ufw allow http
+ufw allow https
+ufw enable
+
 # Create a user to work with
 useradd -m -d /home/infra infra
 
