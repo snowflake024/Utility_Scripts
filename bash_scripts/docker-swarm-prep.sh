@@ -76,3 +76,16 @@ systemctl enable glusterd
 
 # Create gluster volume dir
 mkdir -p /gluster/swarm_volume1
+
+### Run only from the master node to create the volume accross !!!
+### gluster volume create staging-gfs replica 3 docker-master:/gluster/swarm_volume1 docker-slave1:/gluster/swarm_volume1 docker-slave2:/gluster/swarm_volume1 force
+### gluster volume start staging-gfs
+
+# Mount the newly created volume in fstab
+echo 'localhost:/staging-gfs /mnt glusterfs defaults,_netdev,backupvolfile-server=localhost 0 0' >> /etc/fstab
+
+# Actually mount 
+mount.glusterfs localhost:/staging-gfs /mnt
+
+# Change ownership of the mountpoint
+chown -R root:docker /mnt
