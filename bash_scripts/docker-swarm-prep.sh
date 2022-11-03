@@ -73,3 +73,6 @@ apt install \
 # Enable in service manager
 systemctl start glusterd
 systemctl enable glusterd
+
+# Create gluster volume dir
+mkdir -p /gluster/swarm_volume1
