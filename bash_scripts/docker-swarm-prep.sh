@@ -89,3 +89,13 @@ mount.glusterfs localhost:/staging-gfs /mnt
 
 # Change ownership of the mountpoint
 chown -R root:docker /mnt
+
+### To use the persistence share, that has just been created place this in your yaml files
+### volumes:
+###      - type: bind
+###        source: /mnt/staging_mysql
+###        target: /opt/mysql/data</i>
+###
+
+## Source #1: https://thenewstack.io/tutorial-deploy-a-full-stack-application-to-a-docker-swarm/
+## Source #2: https://thenewstack.io/tutorial-create-a-docker-swarm-with-persistent-storage-using-glusterfs/
