@@ -1,3 +1,5 @@
+#!/bin/bash
+
 CONTAINER=$1
 
 if [ "x${CONTAINER}" == "x" ]; then
