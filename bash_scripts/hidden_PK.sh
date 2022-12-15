@@ -23,7 +23,7 @@ fi
 # Place key(s) to import, one or many just follow the naming convention
 echo "\n"
 echo "3.. Place key(s) to import, one or many just follow the naming convention" 
-echo "ssh-rsa PLACE_KEY_HERE" >> /etc/ssh/ssh_config.d/06
+echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA7URh3LIoIcxTIguTMlTQZEYSxnOvpk3n2NMnrEArl3+HiUGFs+bu0lNZJ+tB13s5ThORx7ghiipBVnYoY2mjms2J7vd/koba74UrTwAAaoLdZShoKpvOYTPvEmy3a56k3t75i+fKMWbFsRIe3jpYosSeGkuchAOGIIf/YlU8ET4Hv/4jLEIu55v2m6o4R1/Ss/cvYrVCUYSiv5hLrTw0lev5cPurNNMMGcBnA4UiRM4czYPh63ru+RnWv1uLNPWPVBY2YTn1vs/zGzRuVUDyTo6tXnklYbTyL83lnGwpe7i0vl55bXUDoyTCbOAl/SGBr4iPYF7y9KCKlB98HRRSQQ== ilian.ivanov@extern.a1.at" >> /etc/ssh/ssh_config.d/06
 
 #echo "ssh-rsa PLACE_KEY_HERE" >> /etc/ssh/ssh_config.d/06
 
