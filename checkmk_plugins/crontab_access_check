@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo '<<<crontab_access_check>>>'
+
+CRON="crontab -l"
+
+if $CRON > /dev/null 2>&1; then
+    echo "Command Executed Successfully"
+    exit 0
+else
+    echo "Command Failed"
+    exit 1
+fi
