@@ -17,7 +17,7 @@ def check_user(section):
 # needs to be checked against access to its own crontab
 def check_crontab_access(section):
     for line in section:
-        if line[1].startswith("Failed-CRON"):
+        if line[0].startswith("Failed-CRON"):
             yield Result(state=State.CRIT, summary=f"Local user {check_user(section)} cannot access crontab")
             return
     yield Result(state=State.OK, summary=f"Local user {check_user(section)} cannot access to crontab is OK")
