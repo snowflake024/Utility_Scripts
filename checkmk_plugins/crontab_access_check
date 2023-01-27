@@ -2,7 +2,9 @@
 
 echo '<<<crontab_access_check>>>'
 
-CRON="crontab -l"
+USR=oracle
+
+CRON="crontab -u $USR -l"
 
 if $CRON > /dev/null 2>&1; then
     echo "Command Executed Successfully"
