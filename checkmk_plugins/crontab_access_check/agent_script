@@ -8,9 +8,14 @@ CRON="crontab -u $USR -l"
 
 echo "Checked user $USR"
 
-if $CRON > /dev/null 2>&1; then
-    echo "Successful Command Execution"
+if getent passwd $USR > /dev/null 2>&1; then
+    if $CRON > /dev/null 2>&1; then
+        echo "0 ${USR}_crontab_access_check - \"Successful Command Execution\""
+    else
+        echo "2 ${USR}_crontab_access_check - \"Failed-CRON Command\""
+    fi
 else
-    echo "Failed-CRON Command"
+    echo "0 ${USR}_crontab_access_check - \"No user ${USR} found\""
 fi
+
 
