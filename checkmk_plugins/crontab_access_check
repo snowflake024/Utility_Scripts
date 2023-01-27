@@ -7,9 +7,9 @@ USR=oracle
 CRON="crontab -u $USR -l"
 
 if $CRON > /dev/null 2>&1; then
-    echo "Command Executed Successfully"
+    echo "Successfully Command Executed"
     exit 0
 else
-    echo "Command Failed"
+    echo "Failed Command"
     exit 1
 fi
