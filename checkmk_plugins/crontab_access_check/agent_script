@@ -6,6 +6,8 @@ USR=oracle
 
 CRON="crontab -u $USR -l"
 
+echo "Checked user $USR"
+
 if $CRON > /dev/null 2>&1; then
     echo "Successful Command Execution"
 else
