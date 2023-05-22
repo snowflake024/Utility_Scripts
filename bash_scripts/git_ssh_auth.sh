@@ -1,10 +1,25 @@
 #!/bin/bash
 
+# Function to check if a command exists
+command_exists() {
+  command -v "$1" >/dev/null 2>&1
+}
+
 # Check if Git is installed
-if ! command -v git &> /dev/null; then
+if ! command_exists git; then
     echo "Git is not installed. Installing Git..."
-    sudo apt update
-    sudo apt install git -y
+
+    # Check if the system is RHEL-based or Debian-based
+    if command_exists yum; then
+        sudo yum update -y
+        sudo yum install git -y
+    elif command_exists apt-get; then
+        sudo apt-get update
+        sudo apt-get install git -y
+    else
+        echo "Unable to install Git. Please install Git manually and try again."
+        exit 1
+    fi
 fi
 
 # Generate SSH key pair
@@ -17,7 +32,7 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 
 # Copy public key to clipboard
-cat ~/.ssh/id_rsa.pub | pbcopy
+command_exists xclip && cat ~/.ssh/id_rsa.pub | xclip -selection clipboard
 
 # Prompt user to add public key to Git hosting platform
 echo "Your public key has been copied to the clipboard."
