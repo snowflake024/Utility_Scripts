@@ -35,8 +35,7 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 
 # Copy public key to clipboard
-command -v xclip >/dev/null 2>&1
-if [ $? -eq 0 ]; then
+if ! command_exists xclip; then
     cat ~/.ssh/id_rsa.pub | xclip -selection clipboard
     echo "Your public key has been copied to the clipboard."
 else
