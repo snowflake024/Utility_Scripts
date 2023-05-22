@@ -35,7 +35,14 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 
 # Copy public key to clipboard
-command_exists xclip && cat ~/.ssh/id_rsa.pub | xclip -selection clipboard
+command -v xclip >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+    cat ~/.ssh/id_rsa.pub | xclip -selection clipboard
+    echo "Your public key has been copied to the clipboard."
+else
+    cat ~/.ssh/id_rsa.pub
+    echo "Please manually copy your public key and add it to your Git hosting platform."
+fi
 
 # Prompt user to add public key to Git hosting platform
 echo "Your public key has been copied to the clipboard."
