@@ -22,8 +22,11 @@ if ! command_exists git; then
     fi
 fi
 
-# Generate SSH key pair
-ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+# Generate SSH key pair if it doesn't exist
+if [ ! -f ~/.ssh/id_rsa ]; then
+    HOST=$(hostname)
+    ssh-keygen -t rsa -b 4096 -C "$HOST" -f ~/.ssh/id_rsa -N "" -q
+fi
 
 # Start SSH agent
 eval "$(ssh-agent -s)"
