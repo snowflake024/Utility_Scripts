@@ -6,7 +6,7 @@ command_exists() {
 }
 
 # Check if Git is installed
-if ! command_exists git; then
+if ! command -v git &> /dev/null; then
     echo "Git is not installed. Installing Git..."
 
     # Check if the system is RHEL-based or Debian-based
@@ -35,7 +35,7 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 
 # Copy public key to clipboard
-if ! command_exists xclip; then
+if ! command -v xclip &> /dev/null; then
     cat ~/.ssh/id_rsa.pub | xclip -selection clipboard
     echo "Your public key has been copied to the clipboard."
 else
