@@ -53,10 +53,4 @@ echo "Press Enter to continue once you have added the public key to your Git hos
 
 # Verify SSH connection
 read -s
-
-if ssh -T git@github.com &> /dev/null; then
-    echo "SSH connection established successfully."
-    echo "Git SSH configuration is complete."
-else
-    echo "SSH connection failed. Please check your configuration and try again."
-fi
+ssh -T git@github.com
